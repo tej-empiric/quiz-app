@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-import random
-import uuid
 
 
 class BaseModel(models.Model):
@@ -38,3 +36,17 @@ class Choices(BaseModel):
 class Leaderboard(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField(null=True)
+
+
+class Attempted(BaseModel):
+    user_leaderboard = models.ForeignKey(
+        Leaderboard, related_name="user_attempt", on_delete=models.CASCADE
+    )
+    question = models.ForeignKey(
+        Question, related_name="que_attempted", on_delete=models.CASCADE
+    )
+    choice = models.ForeignKey(
+        Choices, related_name="choice1", on_delete=models.CASCADE
+    )
+
+

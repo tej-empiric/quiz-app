@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Quiz</h3>
+<h1>Quiz</h1>
     <form method="POST">
         {% csrf_token %}
-        {{form.as_p}}
+        <h2>{{question.question}}</h2>
+        {% for choice in choices %}
+        <input type="radio" name="choice" value="{{choice.choice_1}}">{{choice.choice_1}} <br>
+        <input type="radio" name="choice" value="{{choice.choice_2}}">{{choice.choice_2}} <br>
+        <input type="radio" name="choice" value="{{choice.choice_3}}">{{choice.choice_3}} <br>
+        <input type="radio" name="choice" value="{{choice.choice_4}}">{{choice.choice_4}} <br><br>
+        {% endfor %}
         <button type="submit" class="button">Submit</button>
     </form>
 {% endblock %}

@@ -16,17 +16,3 @@ class CustomUserCreationForm(UserCreationForm):
             "password1",
             "password2",
         )
-
-
-# class QuestionForm(forms.Form):
-#     choices1 = Choices.objects.all()
-#     ANS_CHOICES = [
-#         ("1", "1"),
-#         ("2", "2"),
-#         ("3", "3"),
-#         ("4", "4"),
-#     ]
-
-#     question = forms.CharField(
-#         label=choices1.question, widget=forms.RadioSelect(choices=ANS_CHOICES)
-#     )
