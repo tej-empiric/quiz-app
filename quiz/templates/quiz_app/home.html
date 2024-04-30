@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% comment %} display leaderboard {% endcomment %}
 <h2>Leaderboard</h2>
+<table>
+    <tr>
+        <th>Player</th>
+        <th>Score</th>
+    </tr>
+    {% if leaderboard %}
+    {% for leader in leaderboard %}
+    <tr>
+        <td>{{leader.user.username}}</td>
+        <td>{{leader.score}}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
 {% endblock %}

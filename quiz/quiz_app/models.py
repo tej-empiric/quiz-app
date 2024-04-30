@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class BaseModel(models.Model):
@@ -39,14 +40,12 @@ class Leaderboard(BaseModel):
 
 
 class Attempted(BaseModel):
-    user_leaderboard = models.ForeignKey(
-        Leaderboard, related_name="user_attempt", on_delete=models.CASCADE
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, default=settings.AUTH_USER_MODEL
     )
     question = models.ForeignKey(
         Question, related_name="que_attempted", on_delete=models.CASCADE
     )
-    choice = models.ForeignKey(
-        Choices, related_name="choice1", on_delete=models.CASCADE
-    )
+    choice = models.CharField(max_length=150)
 
 

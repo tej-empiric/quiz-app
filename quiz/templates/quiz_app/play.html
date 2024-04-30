@@ -1,16 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+</div>
+
 <h1>Quiz</h1>
-    <form method="POST">
+<div id="timer" data-end-time="{{ request.session.quiz_end_time }}"></div>
+    <form id="quiz-form" method="POST" action="{% url 'play' %}">
         {% csrf_token %}
-        <h2>{{question.question}}</h2>
+        <h2>{{question_count}}. {{question.question}}</h2>
         {% for choice in choices %}
         <input type="radio" name="choice" value="{{choice.choice_1}}">{{choice.choice_1}} <br>
         <input type="radio" name="choice" value="{{choice.choice_2}}">{{choice.choice_2}} <br>
         <input type="radio" name="choice" value="{{choice.choice_3}}">{{choice.choice_3}} <br>
         <input type="radio" name="choice" value="{{choice.choice_4}}">{{choice.choice_4}} <br><br>
         {% endfor %}
+        <input type="hidden" name="question_id" value="{{ question.id }}">
         <button type="submit" class="button">Submit</button>
     </form>
 {% endblock %}
