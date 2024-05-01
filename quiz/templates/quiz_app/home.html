@@ -4,12 +4,14 @@
 <h2>Leaderboard</h2>
 <table>
     <tr>
+        <th>Rank</th>
         <th>Player</th>
         <th>Score</th>
     </tr>
     {% if leaderboard %}
     {% for leader in leaderboard %}
     <tr>
+        <td>{{forloop.counter}}</td>
         <td>{{leader.user.username}}</td>
         <td>{{leader.score}}</td>
     </tr>

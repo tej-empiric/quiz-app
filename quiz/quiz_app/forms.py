@@ -16,3 +16,5 @@ class CustomUserCreationForm(UserCreationForm):
             "password1",
             "password2",
         )
+
+

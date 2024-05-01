@@ -24,6 +24,7 @@ def home(request):
             "-score", "user_id", "-created_at"
         )
         context = {"leaderboard": leaderboard}
+
     except Exception as e:
         print(f"Error displaying leaderboard {str(e)} ")
     return render(request, "quiz_app/home.html", context)
@@ -41,11 +42,11 @@ def play(request):
                     question=question, answer=selected_choice
                 ).exists()
 
-                # Attempted.objects.create(
-                #     user=request.user,
-                #     question=question,
-                #     choice=selected_choice,
-                # )
+                Attempted.objects.create(
+                    user=request.user,
+                    question=question,
+                    choice=selected_choice,
+                )
 
                 if correct_answer:
                     request.session["marks"] = (

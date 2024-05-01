@@ -28,4 +28,15 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Leaderboard)
+
+
+@admin.register(Leaderboard)
+class LeaderboardAdmin(admin.ModelAdmin):
+
+    list_display = ["user", "score"]
+    ordering = ["-score"]
+
+
+@admin.register(Attempted)
+class AttemptedAdmin(admin.ModelAdmin):
+    list_display = ["user", "question", "choice"]

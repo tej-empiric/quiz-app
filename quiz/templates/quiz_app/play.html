@@ -9,7 +9,7 @@
         {% endfor %}
     {% endif %}
 </div>
-
+    
 <h1>Quiz</h1>
 <div id="timer" data-end-time="{{ request.session.quiz_end_time }}"></div>
     <form id="quiz-form" method="POST" action="{% url 'play' %}">

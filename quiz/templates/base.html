@@ -22,7 +22,7 @@
                 {% if user.is_authenticated %}
                 <li class="name">
                     <a href="{% url 'home' %}">
-                    Hi {{ request.user }}!
+                        Hi {{ request.user }}!
                     </a>
                 </li>
                 <li><a href="{% url 'home' %}">Home</a></li>
@@ -34,7 +34,12 @@
                     </form>
                 </li>
                 {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li class="name">
+                    <a href="{% url 'home' %}">
+                        Hi Guest!
+                    </a>
+                </li>
+                <li><a href="{% url 'login' %}">Login or Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>

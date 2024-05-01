@@ -46,6 +46,4 @@ class Attempted(BaseModel):
     question = models.ForeignKey(
         Question, related_name="que_attempted", on_delete=models.CASCADE
     )
-    choice = models.CharField(max_length=150)
-
-
+    choice = models.CharField(max_length=150, blank=True, null=True)

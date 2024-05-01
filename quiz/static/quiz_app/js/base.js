@@ -18,7 +18,7 @@ $(document).ready(function() {
         }
     }, 1000);
 
-    function submitForm() {
+    function submitForm() {  
         $.ajax({
             type: 'POST',
             url: $('#quiz-form').attr('action'),
