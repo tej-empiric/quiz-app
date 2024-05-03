@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="quiz-wrapper">
+<h1 >Quiz</h1>
 <div>
     {% if messages %}
         {% for message in messages %}
@@ -10,9 +11,10 @@
     {% endif %}
 </div>
     
-<h1>Quiz</h1>
+
+<h3>{{question_count}}/5 Question</h3>
 <div id="timer" data-end-time="{{ request.session.quiz_end_time }}"></div>
-    <form id="quiz-form" method="POST" action="{% url 'play' %}">
+    <form id="quiz-form" method="POST" action="{% url 'play' question.quiz_id %}">
         {% csrf_token %}
         <h2>{{question_count}}. {{question.question}}</h2>
         {% for choice in choices %}
@@ -22,7 +24,9 @@
         <input type="radio" name="choice" value="{{choice.choice_4}}">{{choice.choice_4}} <br><br>
         {% endfor %}
         <input type="hidden" name="question_id" value="{{ question.id }}">
+        {% comment %} <input type="hidden" name="quiz" value="{{ question.quiz_id }}"> {% endcomment %}
         <button type="submit" class="button">Submit</button>
     </form>
+</div>
 {% endblock %}
 

@@ -3,7 +3,7 @@
 {% block title %}Login{% endblock %} 
 
 {% block content %}
-<div class="login-wrapper">
+<div class="auth-wrapper">
 <h2>Log In</h2>
 <form method="post">
   {% csrf_token %}
@@ -23,6 +23,6 @@
 </form>
 
 <p>Not registered Yet</p>
-<p><a href="{% url 'signup' %}">Sign Up</a></p>
+<p><a href="{% url 'signup' %}" class="a-auth">Sign Up</a></p>
 </div>
 {% endblock %}

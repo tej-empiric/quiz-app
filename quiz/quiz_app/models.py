@@ -11,10 +11,23 @@ class BaseModel(models.Model):
         abstract = True
 
 
+class Quiz(BaseModel):
+    id = models.IntegerField(primary_key=True, default=1)
+    theme = models.CharField(max_length=100, blank=True, null=True, default="GK")
+
+    def __str__(self):
+        return self.theme
+
+
 class Question(BaseModel):
     question = models.CharField(max_length=150)
     marks = models.IntegerField()
     has_published = models.BooleanField(default=False)
+    quiz = models.ForeignKey(
+        Quiz,
+        related_name="quiz_questions",
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return self.question

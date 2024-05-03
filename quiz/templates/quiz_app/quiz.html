@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>Quiz</th>
+        <th>Play</th>
+    </tr>
+{% if quizzes %}
+{% for quiz in quizzes %}
+
+<tr>
+    <td>{{quiz.theme}}</td>
+    <td>
+    <form method="GET" action="{% url "play" quiz.id %}">
+        {% csrf_token %}
+        {% comment %} <input type="hidden" name="quiz" value="{{ quiz }}"> {% endcomment %}
+        <button type="submit" class="button">Play</button>
+    </form>
+    </td>
+</tr>
+{% endfor %}
+{% endif %}
+</table>
+{% endblock %}

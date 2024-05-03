@@ -1,21 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Leaderboard</h2>
+<h2 class="title1">Leaderboard</h2>
 <table>
-    <tr>
-        <th>Rank</th>
-        <th>Player</th>
-        <th>Score</th>
-    </tr>
-    {% if leaderboard %}
-    {% for leader in leaderboard %}
-    <tr>
-        <td>{{forloop.counter}}</td>
-        <td>{{leader.user.username}}</td>
-        <td>{{leader.score}}</td>
-    </tr>
-    {% endfor %}
+    
+    {% if user.is_authenticated %}
+        <tr>
+            <th>Quiz</th>
+            <th>Score</th>
+        </tr>
+        {% if leaderboard1 %}
+        {% for leader in leaderboard1 %}
+        <tr>
+            <td>{{forloop.revcounter}}</td>
+            <td>{{leader.score}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+
+        {% else %}
+        <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Score</th>
+        </tr>
+        {% if leaderboard %}
+        {% for leader in leaderboard %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{leader.user.username}}</td>
+            <td>{{leader.score}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+
     {% endif %}
 </table>
 
